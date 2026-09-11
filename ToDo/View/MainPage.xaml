@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDo.MainPage"
+             BackgroundColor="LightGray">
+
+    <ScrollView>
+
+        <VerticalStackLayout  Padding="100" Margin="20,0,20,0" Spacing="20">
+            <StackLayout HorizontalOptions="Center"  VerticalOptions="Center" >
+            <Label FontSize="50"
+                   TextColor="Black"
+                   Text="Escolha uma das opções"/>
+            </StackLayout>
+            <StackLayout Spacing="60" HorizontalOptions="Center"  VerticalOptions="Center" >
+                <Button FontSize="Header" Text="Cadastrar nova atividade" Clicked="novaAtividadeButton"/>
+                <Button FontSize="Header" Text="Listar atividades"/>
+            </StackLayout>
+
+        </VerticalStackLayout>
+        
+    </ScrollView>
+
+</ContentPage>
