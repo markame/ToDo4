@@ -13,8 +13,10 @@ namespace ToDo.Service
         public ConexaoSqlite()
         {
             _connectionString = "Data Source=todo.db";
-            Conn();
             CtbAtividade();
+            Conn();
+
+           
         }
         public SqliteConnection Conn()
         {
@@ -28,8 +30,8 @@ namespace ToDo.Service
             try
             {
                 var comando = Conn().CreateCommand();
-                comando.CommandText = @"Create or replace table Atividade(
-                    id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,
+                comando.CommandText = @"Create table if not exists Atividade(
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nome TEXT NOT NULL,
                     descricao TEXT NOT NULL,
                     dataCriacao DATETIME NOT NULL,
