@@ -14,5 +14,12 @@ namespace ToDo
         {
             await Navigation.PushAsync(new NovaAtividade());
         }
+
+        private async void listarAtividadeButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ListAtividade());
+            
+        }
+
     }
 }

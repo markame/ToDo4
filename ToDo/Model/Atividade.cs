@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Text;
+
 using Microsoft.Data.Sqlite;
 using ToDo.Service;
 
@@ -42,23 +44,35 @@ namespace ToDo.Model
                 return "Erro ao inserir atividade: " + ex.Message;
             }
         }
-        public List<Atividade> GetAllAtividades()
+        public ObservableCollection<Atividade> GetAllAtividades()
         {
             List<Atividade> atividades = new List<Atividade>();
             Conn().Open();
             var commando = Conn().CreateCommand();
-             commando.CommandText = @"Select * From Atividade";
+            commando.CommandText = @"Select * From Atividade";
+            try { 
             var reader = commando.ExecuteReader();
-            Atividade atv = new Atividade();
+            
             while (reader.Read())
             {
-                atv.Nome = reader.GetString(0);
-                atv.Descricao = reader.GetString(1);
-                atv.DataCriacao = reader.GetString(2);
-                atv.Status = reader.GetInt32(3);
+                Atividade atv = new Atividade();
+                atv.Id = reader.GetInt32(0);
+                atv.Nome = reader.GetString(1);
+                atv.Descricao = reader.GetString(2);
+                atv.DataCriacao = reader.GetString(3);
+                atv.Status = reader.GetInt32(4);
+
                 atividades.Add(atv);
+                }
+             
+
+                ObservableCollection<Atividade> atvlist = new ObservableCollection<Atividade>(atividades);
+            return atvlist;
             }
-            return atividades; 
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     }
 

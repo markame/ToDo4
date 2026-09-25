@@ -14,7 +14,7 @@
             </StackLayout>
             <StackLayout Spacing="60" HorizontalOptions="Center"  VerticalOptions="Center" >
                 <Button FontSize="Header" Text="Cadastrar nova atividade" Clicked="novaAtividadeButton"/>
-                <Button FontSize="Header" Text="Listar atividades"/>
+                <Button FontSize="Header" Text="Listar atividades" Clicked="listarAtividadeButton"/>
             </StackLayout>
 
         </VerticalStackLayout>
