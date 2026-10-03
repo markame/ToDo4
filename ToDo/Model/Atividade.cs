@@ -52,7 +52,7 @@ namespace ToDo.Model
             commando.CommandText = @"Select * From Atividade";
             try { 
             var reader = commando.ExecuteReader();
-            
+                
             while (reader.Read())
             {
                 Atividade atv = new Atividade();
@@ -72,6 +72,28 @@ namespace ToDo.Model
             catch (Exception e)
             {
                 return null;
+            }
+        }
+
+        public string UptadeAtividade(Atividade a)
+        {
+            try
+            {
+                Conn().Open();
+                var comando = Conn().CreateCommand();
+                comando.CommandText = @"Update Atividade Set nome=@nome, descricao=@descricao, dataCriacao=@dataCriacao, status=@status Where id=@id";
+                comando.Parameters.AddWithValue("@id", a.Id);
+                comando.Parameters.AddWithValue("@nome", a.Nome);
+                comando.Parameters.AddWithValue("@descricao", a.Descricao);
+                comando.Parameters.AddWithValue("@dataCriacao", a.DataCriacao);
+                comando.Parameters.AddWithValue("@status", a.Status);
+                comando.ExecuteNonQuery();
+                return "Atividade atualizada com sucesso!";
+
+            }
+            catch (Exception ex)
+            {
+                return "Erro ao atualizar atividade: " + ex.Message;
             }
         }
     }

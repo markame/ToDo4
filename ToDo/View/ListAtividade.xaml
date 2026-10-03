@@ -7,7 +7,10 @@
     <ScrollView>
         <VerticalStackLayout Padding="100" Margin="0,0,0,0" Spacing="20">
 
-            <CollectionView x:Name="listaAtividades">
+            <CollectionView x:Name="listaAtividades"
+                            SelectionMode="Single"
+                            SelectionChanged="listaAtividades_SelectionChanged">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="White" CornerRadius="10" >

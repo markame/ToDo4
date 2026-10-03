@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDo.View.ViewAtividade"
+             Title="ViewAtividade"
+             BackgroundColor="LightGray">
+    <ScrollView>
+        <VerticalStackLayout x:Name="Formulario" Padding="100" Margin="20,0,20,0" Spacing="20">
+            <HorizontalStackLayout HorizontalOptions="Start">
+                <Label FontSize="Title" TextColor="Black" Text="Nome:"/>
+                <Entry x:Name="entTNome" WidthRequest="500"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Start">
+                <Label FontSize="Title" TextColor="Black" Text="Descrição:"/>
+                <Entry x:Name="entTDescricao" WidthRequest="500"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Start">
+                <Label FontSize="Title" TextColor="Black" Text="Data Criação:"/>
+                <DatePicker x:Name="dtTData" TextColor="Black" FontSize="Title"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Start">
+                <Label FontSize="Title" TextColor="Black" Text="Status:"/>
+                <CheckBox x:Name="cbTStatus" IsEnabled="True"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                <Button Clicked="UpdateAtividade" Text="Salvar atividade"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

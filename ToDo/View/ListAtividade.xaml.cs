@@ -14,9 +14,23 @@ public partial class ListAtividade : ContentPage
 
 	public void ObservableAtividades()
 	{
-		Atividade a = new Atividade();
+		
+        Atividade a = new Atividade();
 		ObservableCollection<Atividade> atividade = new ObservableCollection<Atividade>();
 		atividade = a.GetAllAtividades();
 		listaAtividades.ItemsSource = atividade;
-	}
+
+        
+    }
+
+    private async void listaAtividades_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+		var selectedAtividade = e.CurrentSelection.FirstOrDefault() as Atividade;
+		/*await DisplayAlertAsync("Atividade Selecionada", $"Nome: " +
+			$"{selectedAtividade.Nome}\nDescrição:" +
+			$" {selectedAtividade.Descricao}\nData de Criação:" +
+			$" {selectedAtividade.DataCriacao}\nStatus:" +
+			$" {selectedAtividade.Status}", "OK");*/
+		await Navigation.PushAsync(new ViewAtividade(selectedAtividade));
+    }
 }
